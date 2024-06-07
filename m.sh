@@ -7,4 +7,6 @@ inputs=(
     "roberta-base-dual-1000000-1e-06-128"
 )
 
-for input in "${inputs[@]}" do python3 con.py --path "$input" done
+for input in "${inputs[@]}"; do 
+    python3 con.py --path "$input" 
+done
