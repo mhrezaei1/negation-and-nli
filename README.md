@@ -1,4 +1,4 @@
-Negation and Natural Language Inference
+Negation and Natural Language Inference (forked)
 ===================================================================
 This repository contains code of the EMNLP2020 paper "An Analysis of Natural Language Inference Benchmarks through the Lens of Negation". Paper link: https://www.aclweb.org/anthology/2020.emnlp-main.732.pdf  
 Authors: Md Mosharaf Hossain, Venelin Kovatchev, Pranoy Dutta, Tiffany Kao, Elizabeth Wei and Eduardo Blanco  
