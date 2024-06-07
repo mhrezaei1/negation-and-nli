@@ -3,11 +3,6 @@
 # Define your inputs here. For example:
 inputs=(
     "roberta-base roberta-base-dual-1000000-1e-06-128"
-    "roberta-base roberta-base-pp-500000-1e-06-128"
-    "roberta-base roberta-base-nsp-1000000-1e-06-32"
-    "roberta-large roberta-large-pp-500000-1e-06-128"
-    "roberta-large roberta-large-nsp-1000000-1e-06-32-pp-1000000-1e-06-128"
-    "roberta-large roberta-large-dual-500000-1e-06-128"
 )
 
 # Maximum number of concurrent jobs, equals to the number of GPUs
@@ -23,18 +18,6 @@ check_jobs() {
   done
 }
 
-# Function to download model from Hugging Face if not already downloaded
-download_model() {
-  local model_name=$1
-  local model_path="$MODEL_DIR/$model_name"
-  if [ ! -d "$model_path" ]; then
-    echo "Downloading model: $model_name"
-    mkdir -p "$model_path"
-    python3 -c "from transformers import AutoModel; AutoModel.from_pretrained('$model_name').save_pretrained('$model_path')"
-  else
-    echo "Model $model_name already downloaded."
-  fi
-}
 
 # Loop through inputs and execute them
 for i in "${!inputs[@]}"; do
@@ -48,8 +31,6 @@ for i in "${!inputs[@]}"; do
     roberta_type=$(echo ${inputs[$i]} | awk '{print $1}')
     roberta_path=$(echo ${inputs[$i]} | awk '{print $2}')
 
-    # Download the model locally
-    download_model "mhr2004/$roberta_path"
 
     echo "Starting job $i on GPU $gpu_index"
 
