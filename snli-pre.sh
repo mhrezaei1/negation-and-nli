@@ -61,4 +61,4 @@ wait
 
 echo "All processes completed"
 
-curl -d "RTE trainings finished" ntfy.sh/mhrnlpmodels
+curl -d "SNLI trainings finished" ntfy.sh/mhrnlpmodels
