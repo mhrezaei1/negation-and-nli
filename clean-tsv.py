@@ -24,6 +24,6 @@ def clean_tsv(input_tsv_path, output_tsv_path):
     df.to_csv(output_tsv_path, sep='\t', index=False)
 
 # Usage
-input_tsv_path = 'snli_1.0/train.tsv'  # Path to your input TSV file
-output_tsv_path = 'snli_1.0/clean/train.tsv'  # Path where you want to save the cleaned TSV file
+input_tsv_path = 'snli_1.0/dev.tsv'  # Path to your input TSV file
+output_tsv_path = 'snli_1.0/clean/dev.tsv'  # Path where you want to save the cleaned TSV file
 clean_tsv(input_tsv_path, output_tsv_path)
