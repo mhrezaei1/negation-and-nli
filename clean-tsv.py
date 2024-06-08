@@ -14,10 +14,16 @@ def clean_tsv(input_tsv_path, output_tsv_path):
     df = df[['index', 'captionID', 'pairID', 'sentence1_binary_parse', 'sentence2_binary_parse',
              'sentence1_parse', 'sentence2_parse', 'sentence1', 'sentence2', 'gold_label']]
     
+    # check if any of gold_label is '-' and remove them and print a message
+    if '-' in df['gold_label'].values:
+        print(f"Found '-' in gold_label. Removing {len(df[df['gold_label'] == '-'])} rows.")
+        df = df[df['gold_label'] != '-']
+    
+    
     # Save the cleaned DataFrame to a new TSV file
     df.to_csv(output_tsv_path, sep='\t', index=False)
 
 # Usage
-input_tsv_path = 'snli_1.0/test.tsv'  # Path to your input TSV file
-output_tsv_path = 'snli_1.0/clean/test.tsv'  # Path where you want to save the cleaned TSV file
+input_tsv_path = 'snli_1.0/train.tsv'  # Path to your input TSV file
+output_tsv_path = 'snli_1.0/clean/train.tsv'  # Path where you want to save the cleaned TSV file
 clean_tsv(input_tsv_path, output_tsv_path)
