@@ -2,13 +2,7 @@
 
 # Define your inputs here. For example:
 inputs=(
-    "roberta-large roberta-large"
-    "roberta-large roberta-large-pp-500000-1e-06-128"
-    "roberta-large roberta-large-dual-500000-1e-06-128"
-
-    "roberta-base roberta-base-pp-1000000-1e-06-128"
-    "roberta-base roberta-base-nsp-1000000-1e-06-32"
-    "roberta-base roberta-base-dual-1000000-1e-06-128"
+    "roberta-large roberta-large-nsp-1000000-1e-06-32"
 )
 
 # Maximum number of concurrent jobs, equals to the number of GPUs
@@ -67,4 +61,4 @@ wait
 
 echo "All processes completed"
 
-curl -d "SNLI trainings finished" ntfy.sh/mhrnlpmodels
+curl -d "RTE trainings finished" ntfy.sh/mhrnlpmodels
