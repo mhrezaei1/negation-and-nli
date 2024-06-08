@@ -202,17 +202,6 @@ if __name__ == "__main__":
         evaluation().accuracy_org_corpus(model_name, actual_file, pred_file, cues_indices_dict)
         
         
-        # XLNet
-        model_name    = "XLNet"
-        actual_file   = "./outputs/predictions/RTE/XLNet/original_dev/rte_actuals.csv"
-        pred_file     = "./outputs/predictions/RTE/XLNet/original_dev/rte_prediction.csv"
-        evaluation().accuracy_org_corpus(model_name, actual_file, pred_file, cues_indices_dict)
-        
-        # BERT
-        model_name    = "BERT"
-        actual_file   = "./outputs/predictions/RTE/BERT/original_dev/rte_actuals.csv"
-        pred_file     = "./outputs/predictions/RTE/BERT/original_dev/rte_prediction.csv"
-        evaluation().accuracy_org_corpus(model_name, actual_file, pred_file, cues_indices_dict)
         print("Ended: Evaluation on original dev split----------------------------------------------------------")
         
         
@@ -228,19 +217,6 @@ if __name__ == "__main__":
         pred_file     = "./outputs/predictions/RTE/RoBERTa/new_dev/rte_prediction.csv"
         evaluation().accuracy_new_corpus(model_name, actual_file, pred_file, neg_cues_dict)
         
-        
-        # XLNet
-        model_name  = "XLNet"
-        actual_file   = "./outputs/predictions/RTE/XLNet/new_dev/rte_actuals.csv"
-        pred_file     = "./outputs/predictions/RTE/XLNet/new_dev/rte_prediction.csv"
-        evaluation().accuracy_new_corpus(model_name, actual_file, pred_file, neg_cues_dict)
-        
-        
-        # BERT
-        model_name  = "BERT"
-        actual_file   = "./outputs/predictions/RTE/BERT/new_dev/rte_actuals.csv"
-        pred_file     = "./outputs/predictions/RTE/BERT/new_dev/rte_prediction.csv"
-        evaluation().accuracy_new_corpus(model_name, actual_file, pred_file, neg_cues_dict)
         print("Ended: Evaluation on new pairs containing negation----------------------------------------------------------")
 
     
@@ -258,19 +234,7 @@ if __name__ == "__main__":
         actual_file   = "./outputs/predictions/SNLI/RoBERTa/original_dev/rte_actuals.csv"
         pred_file     = "./outputs/predictions/SNLI/RoBERTa/original_dev/rte_prediction.csv"
         evaluation().accuracy_org_corpus(model_name, actual_file, pred_file, cues_indices_dict)
-        
-        
-        # XLNet
-        model_name    = "XLNet"
-        actual_file   = "./outputs/predictions/SNLI/XLNet/original_dev/rte_actuals.csv"
-        pred_file     = "./outputs/predictions/SNLI/XLNet/original_dev/rte_prediction.csv"
-        evaluation().accuracy_org_corpus(model_name, actual_file, pred_file, cues_indices_dict)
-        
-        # BERT
-        model_name    = "BERT"
-        actual_file   = "./outputs/predictions/SNLI/BERT/original_dev/rte_actuals.csv"
-        pred_file     = "./outputs/predictions/SNLI/BERT/original_dev/rte_prediction.csv"
-        evaluation().accuracy_org_corpus(model_name, actual_file, pred_file, cues_indices_dict)
+
         print("Ended: Evaluation on original dev split----------------------------------------------------------")
         
         
@@ -287,18 +251,6 @@ if __name__ == "__main__":
         evaluation().accuracy_new_corpus(model_name, actual_file, pred_file, neg_cues_dict)
         
         
-        # XLNet
-        model_name  = "XLNet"
-        actual_file   = "./outputs/predictions/SNLI/XLNet/new_dev/rte_actuals.csv"
-        pred_file     = "./outputs/predictions/SNLI/XLNet/new_dev/rte_prediction.csv"
-        evaluation().accuracy_new_corpus(model_name, actual_file, pred_file, neg_cues_dict)
-        
-        
-        # BERT
-        model_name  = "BERT"
-        actual_file   = "./outputs/predictions/SNLI/BERT/new_dev/rte_actuals.csv"
-        pred_file     = "./outputs/predictions/SNLI/BERT/new_dev/rte_prediction.csv"
-        evaluation().accuracy_new_corpus(model_name, actual_file, pred_file, neg_cues_dict)
         print("Ended: Evaluation on new pairs containing negation----------------------------------------------------------")
 
     elif corpus == "mnli":
@@ -316,18 +268,6 @@ if __name__ == "__main__":
         pred_file     = "./outputs/predictions/MNLI/RoBERTa/original_dev/rte_prediction.csv"
         evaluation().accuracy_org_corpus(model_name, actual_file, pred_file, cues_indices_dict)
         
-        
-        # XLNet
-        model_name    = "XLNet"
-        actual_file   = "./outputs/predictions/MNLI/XLNet/original_dev/rte_actuals.csv"
-        pred_file     = "./outputs/predictions/MNLI/XLNet/original_dev/rte_prediction.csv"
-        evaluation().accuracy_org_corpus(model_name, actual_file, pred_file, cues_indices_dict)
-        
-        # BERT
-        model_name    = "BERT"
-        actual_file   = "./outputs/predictions/MNLI/BERT/original_dev/rte_actuals.csv"
-        pred_file     = "./outputs/predictions/MNLI/BERT/original_dev/rte_prediction.csv"
-        evaluation().accuracy_org_corpus(model_name, actual_file, pred_file, cues_indices_dict)
         print("Ended: Evaluation on original dev split----------------------------------------------------------")
         
         
@@ -343,19 +283,6 @@ if __name__ == "__main__":
         pred_file     = "./outputs/predictions/MNLI/RoBERTa/new_dev/rte_prediction.csv"
         evaluation().accuracy_new_corpus(model_name, actual_file, pred_file, neg_cues_dict)
         
-        
-        # XLNet
-        model_name  = "XLNet"
-        actual_file   = "./outputs/predictions/MNLI/XLNet/new_dev/rte_actuals.csv"
-        pred_file     = "./outputs/predictions/MNLI/XLNet/new_dev/rte_prediction.csv"
-        evaluation().accuracy_new_corpus(model_name, actual_file, pred_file, neg_cues_dict)
-        
-        
-        # BERT
-        model_name  = "BERT"
-        actual_file   = "./outputs/predictions/MNLI/BERT/new_dev/rte_actuals.csv"
-        pred_file     = "./outputs/predictions/MNLI/BERT/new_dev/rte_prediction.csv"
-        evaluation().accuracy_new_corpus(model_name, actual_file, pred_file, neg_cues_dict)
         print("Ended: Evaluation on new pairs containing negation----------------------------------------------------------")
 
 
