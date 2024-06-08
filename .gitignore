@@ -4,3 +4,4 @@ outputs/
 batch-run.sh
 negation-and-nli.*
 env/
+snli_1.0/train.tsv
