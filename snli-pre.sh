@@ -27,6 +27,8 @@ for i in "${!inputs[@]}"; do
     
     # Calculate GPU index: i % MAX_JOBS ensures cycling through GPUs 0 to MAX_JOBS-1
     gpu_index=$((i % MAX_JOBS))
+    # add 2 to gpu_index
+    gpu_index=$((gpu_index + 2))
 
     # Split input into variables
     roberta_type=$(echo ${inputs[$i]} | awk '{print $1}')
