@@ -9,6 +9,9 @@ inputs=(
     "roberta-base roberta-base-pp-1000000-1e-06-128"
     "roberta-base roberta-base-nsp-1000000-1e-06-32"
     "roberta-base roberta-base-dual-1000000-1e-06-128"
+
+    "roberta-base roberta-base"
+    "roberta-large roberta-large"
 )
 
 # Maximum number of concurrent jobs, equals to the number of GPUs
