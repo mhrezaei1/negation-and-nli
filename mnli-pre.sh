@@ -2,7 +2,7 @@
 
 # Define your inputs here. For example:
 inputs=(
-    "roberta-large roberta-large"
+    "roberta-large roberta-large-pp-500000-1e-06-128"
 )
 
 # Maximum number of concurrent jobs, equals to the number of GPUs
