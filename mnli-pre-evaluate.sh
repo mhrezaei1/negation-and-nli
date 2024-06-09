@@ -12,7 +12,7 @@ inputs=(
 )
 
 # Maximum number of concurrent jobs, equals to the number of GPUs
-MAX_JOBS=4
+MAX_JOBS=1
 
 # Directory to store the downloaded models
 MODEL_DIR=./downloaded_models
