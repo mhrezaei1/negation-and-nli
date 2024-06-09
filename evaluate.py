@@ -181,108 +181,133 @@ class evaluation():
 if __name__ == "__main__":
     
     #python evaluate.py --corpus rte
-    argParser   = argparse.ArgumentParser()
-    argParser.add_argument("--corpus", help="Name of the corpus to show results (e.g., rte, snli, mnli)", required=True)      
-    args        = argParser.parse_args()
-    corpus      = args.corpus
-    
-    if corpus == "rte":
-        #Read negation in original dev split
-        file_path = "./data/resources/RTE/negation_indices.pkl"
-        with open(file_path, "rb") as file_obj:
-            dev_cues = pickle.load(file_obj)  
-        cues_only_sent1, cues_only_sent2, cues_both_sent, cues_all, no_cues = negation_cues().get_cue_indices(dev_cues)
-        cues_indices_dict = {"cues_only_sent1":cues_only_sent1, "cues_only_sent2":cues_only_sent2, "cues_both_sent":cues_both_sent, "cues_all":cues_all, "no_cues":no_cues}
-        
-        print("\nStarted: Evaluation on original dev split----------------------------------------------------------")
-        # RoBERTa
-        model_name    = "RoBERTa"
-        actual_file   = "./outputs/predictions/RTE/RoBERTa/original_dev/rte_actuals.csv"
-        pred_file     = "./outputs/predictions/RTE/RoBERTa/original_dev/rte_prediction.csv"
-        evaluation().accuracy_org_corpus(model_name, actual_file, pred_file, cues_indices_dict)
-        
-        
-        print("Ended: Evaluation on original dev split----------------------------------------------------------")
-        
-        
-        print("\n\nStarted: Evaluation on new pairs containing negation----------------------------------------------------------")
-        #____________________________________SNLI(Generated Data)___________________________________________________________________________
-        file_path = "./data/new_benchmarks/resources/RTE/negated_indices.pkl"
-        with open(file_path, "rb") as file_obj:
-            neg_cues_dict = pickle.load(file_obj)  #keys: tr_pred_scope,te_pred_scope
-    
-        # RoBERTa
-        model_name  = "RoBERTa"
-        actual_file   = "./outputs/predictions/RTE/RoBERTa/new_dev/rte_actuals.csv"
-        pred_file     = "./outputs/predictions/RTE/RoBERTa/new_dev/rte_prediction.csv"
-        evaluation().accuracy_new_corpus(model_name, actual_file, pred_file, neg_cues_dict)
-        
-        print("Ended: Evaluation on new pairs containing negation----------------------------------------------------------")
+    # argParser   = argparse.ArgumentParser()
+    # argParser.add_argument("--corpus", help="Name of the corpus to show results (e.g., rte, snli, mnli)", required=True)      
+    # args        = argParser.parse_args()
+    # corpus      = args.corpus
+    models = [
+        "roberta-base",
+        "roberta-base-pp-1000000-1e-06-128",
+        "roberta-base-nsp-1000000-1e-06-32",
+        "roberta-base-dual-1000000-1e-06-128",
+        "roberta-large",
+        "roberta-large-pp-500000-1e-06-128",
+        "roberta-large-nsp-1000000-1e-06-32",
+        "roberta-large-dual-500000-1e-06-128",
+    ]
 
-    
-    elif corpus == "snli":
-        #Read negation in original dev split
-        file_path = "./data/resources/SNLI/negation_indices.pkl"
-        with open(file_path, "rb") as file_obj:
-            dev_cues = pickle.load(file_obj)  
-        cues_only_sent1, cues_only_sent2, cues_both_sent, cues_all, no_cues = negation_cues().get_cue_indices(dev_cues)
-        cues_indices_dict = {"cues_only_sent1":cues_only_sent1, "cues_only_sent2":cues_only_sent2, "cues_both_sent":cues_both_sent, "cues_all":cues_all, "no_cues":no_cues}
-        
-        print("\nStarted: Evaluation on original dev split----------------------------------------------------------")
-        # RoBERTa
-        model_name    = "RoBERTa"
-        actual_file   = "./outputs/predictions/SNLI/RoBERTa/original_dev/rte_actuals.csv"
-        pred_file     = "./outputs/predictions/SNLI/RoBERTa/original_dev/rte_prediction.csv"
-        evaluation().accuracy_org_corpus(model_name, actual_file, pred_file, cues_indices_dict)
+    corpus = "snli"
+    for path in models:
 
-        print("Ended: Evaluation on original dev split----------------------------------------------------------")
+        if corpus == "rte":
+            #Read negation in original dev split
+            file_path = "./data/resources/RTE/negation_indices.pkl"
+            with open(file_path, "rb") as file_obj:
+                dev_cues = pickle.load(file_obj)  
+            cues_only_sent1, cues_only_sent2, cues_both_sent, cues_all, no_cues = negation_cues().get_cue_indices(dev_cues)
+            cues_indices_dict = {"cues_only_sent1":cues_only_sent1, "cues_only_sent2":cues_only_sent2, "cues_both_sent":cues_both_sent, "cues_all":cues_all, "no_cues":no_cues}
+            
+            print("\nStarted: Evaluation on original dev split----------------------------------------------------------")
+            # RoBERTa
+            model_name    = "RoBERTa"
+            # actual_file   = "./outputs/predictions/RTE/RoBERTa/original_dev/rte_actuals.csv"
+            actual_file   = "./preds/predictions/RTE/RoBERTa/" + path + "/original_devrte_actuals.csv"
+            # pred_file     = "./outputs/predictions/RTE/RoBERTa/original_dev/rte_prediction.csv"
+            pred_file     = "./preds/predictions/RTE/RoBERTa/" + path + "/original_devrte_prediction.csv"
+            evaluation().accuracy_org_corpus(path, actual_file, pred_file, cues_indices_dict)
+            
+            
+            print("Ended: Evaluation on original dev split----------------------------------------------------------")
+            
+            
+            print("\n\nStarted: Evaluation on new pairs containing negation----------------------------------------------------------")
+            #____________________________________SNLI(Generated Data)___________________________________________________________________________
+            file_path = "./data/new_benchmarks/resources/RTE/negated_indices.pkl"
+            with open(file_path, "rb") as file_obj:
+                neg_cues_dict = pickle.load(file_obj)  #keys: tr_pred_scope,te_pred_scope
         
-        
-        print("\n\nStarted: Evaluation on new pairs containing negation----------------------------------------------------------")
-        #____________________________________SNLI(Generated Data)___________________________________________________________________________
-        file_path = "./data/new_benchmarks/resources/SNLI/negated_indices.pkl"
-        with open(file_path, "rb") as file_obj:
-            neg_cues_dict = pickle.load(file_obj)  #keys: tr_pred_scope,te_pred_scope
-    
-        # RoBERTa
-        model_name  = "RoBERTa"
-        actual_file   = "./outputs/predictions/SNLI/RoBERTa/new_dev/rte_actuals.csv"
-        pred_file     = "./outputs/predictions/SNLI/RoBERTa/new_dev/rte_prediction.csv"
-        evaluation().accuracy_new_corpus(model_name, actual_file, pred_file, neg_cues_dict)
-        
-        
-        print("Ended: Evaluation on new pairs containing negation----------------------------------------------------------")
+            # RoBERTa
+            model_name  = "RoBERTa"
+            # actual_file   = "./outputs/predictions/RTE/RoBERTa/new_dev/rte_actuals.csv"
+            actual_file  = "./preds/predictions/RTE/RoBERTa/" + path + "/new_dev/rte_actuals.csv"
+            # pred_file     = "./outputs/predictions/RTE/RoBERTa/new_dev/rte_prediction.csv"
+            pred_file    = "./preds/predictions/RTE/RoBERTa/" + path + "/new_dev/rte_prediction.csv"
+            evaluation().accuracy_new_corpus(path, actual_file, pred_file, neg_cues_dict)
+            
+            print("Ended: Evaluation on new pairs containing negation----------------------------------------------------------")
 
-    elif corpus == "mnli":
-        #Read negation in original dev split
-        file_path = "./data/resources/MNLI/negation_indices.pkl"
-        with open(file_path, "rb") as file_obj:
-            dev_cues = pickle.load(file_obj)  
-        cues_only_sent1, cues_only_sent2, cues_both_sent, cues_all, no_cues = negation_cues().get_cue_indices(dev_cues)
-        cues_indices_dict = {"cues_only_sent1":cues_only_sent1, "cues_only_sent2":cues_only_sent2, "cues_both_sent":cues_both_sent, "cues_all":cues_all, "no_cues":no_cues}
         
-        print("\nStarted: Evaluation on original dev split----------------------------------------------------------")
-        # RoBERTa
-        model_name    = "RoBERTa"
-        actual_file   = "./outputs/predictions/MNLI/RoBERTa/original_dev/rte_actuals.csv"
-        pred_file     = "./outputs/predictions/MNLI/RoBERTa/original_dev/rte_prediction.csv"
-        evaluation().accuracy_org_corpus(model_name, actual_file, pred_file, cues_indices_dict)
+        elif corpus == "snli":
+            #Read negation in original dev split
+            file_path = "./data/resources/SNLI/negation_indices.pkl"
+            with open(file_path, "rb") as file_obj:
+                dev_cues = pickle.load(file_obj)  
+            cues_only_sent1, cues_only_sent2, cues_both_sent, cues_all, no_cues = negation_cues().get_cue_indices(dev_cues)
+            cues_indices_dict = {"cues_only_sent1":cues_only_sent1, "cues_only_sent2":cues_only_sent2, "cues_both_sent":cues_both_sent, "cues_all":cues_all, "no_cues":no_cues}
+            
+            print("\nStarted: Evaluation on original dev split----------------------------------------------------------")
+            # RoBERTa
+            model_name    = "RoBERTa"
+            # actual_file   = "./outputs/predictions/SNLI/RoBERTa/original_dev/rte_actuals.csv"
+            actual_file   = "./preds/predictions/SNLI/RoBERTa/" + path + "/original_devsnli_actuals.csv"
+            # pred_file     = "./outputs/predictions/SNLI/RoBERTa/original_dev/rte_prediction.csv"
+            pred_file     = "./preds/predictions/SNLI/RoBERTa/" + path + "/original_devsnli_prediction.csv"
+            evaluation().accuracy_org_corpus(path, actual_file, pred_file, cues_indices_dict)
+
+            print("Ended: Evaluation on original dev split----------------------------------------------------------")
+            
+            
+            print("\n\nStarted: Evaluation on new pairs containing negation----------------------------------------------------------")
+            #____________________________________SNLI(Generated Data)___________________________________________________________________________
+            file_path = "./data/new_benchmarks/resources/SNLI/negated_indices.pkl"
+            with open(file_path, "rb") as file_obj:
+                neg_cues_dict = pickle.load(file_obj)  #keys: tr_pred_scope,te_pred_scope
         
-        print("Ended: Evaluation on original dev split----------------------------------------------------------")
+            # RoBERTa
+            model_name  = "RoBERTa"
+            # actual_file   = "./outputs/predictions/SNLI/RoBERTa/new_dev/rte_actuals.csv"
+            # pred_file     = "./outputs/predictions/SNLI/RoBERTa/new_dev/rte_prediction.csv"
+            actual_file  = "./preds/predictions/SNLI/RoBERTa/" + path + "/new_dev/snli_actuals.csv"
+            pred_file    = "./preds/predictions/SNLI/RoBERTa/" + path + "/new_dev/snli_prediction.csv"
+            evaluation().accuracy_new_corpus(path, actual_file, pred_file, neg_cues_dict)
+            
+            
+            print("Ended: Evaluation on new pairs containing negation----------------------------------------------------------")
+
+        elif corpus == "mnli":
+            #Read negation in original dev split
+            file_path = "./data/resources/MNLI/negation_indices.pkl"
+            with open(file_path, "rb") as file_obj:
+                dev_cues = pickle.load(file_obj)  
+            cues_only_sent1, cues_only_sent2, cues_both_sent, cues_all, no_cues = negation_cues().get_cue_indices(dev_cues)
+            cues_indices_dict = {"cues_only_sent1":cues_only_sent1, "cues_only_sent2":cues_only_sent2, "cues_both_sent":cues_both_sent, "cues_all":cues_all, "no_cues":no_cues}
+            
+            print("\nStarted: Evaluation on original dev split----------------------------------------------------------")
+            # RoBERTa
+            model_name    = "RoBERTa"
+            # actual_file   = "./outputs/predictions/MNLI/RoBERTa/original_dev/rte_actuals.csv"
+            actual_file  = "./preds/predictions/MNLI/RoBERTa/" + path + "/original_devrte_actuals.csv"
+            # pred_file     = "./outputs/predictions/MNLI/RoBERTa/original_dev/rte_prediction.csv"
+            pred_file    = "./preds/predictions/MNLI/RoBERTa/" + path + "/original_devrte_prediction.csv"
+            evaluation().accuracy_org_corpus(path, actual_file, pred_file, cues_indices_dict)
+            
+            print("Ended: Evaluation on original dev split----------------------------------------------------------")
+            
+            
+            print("\n\nStarted: Evaluation on new pairs containing negation----------------------------------------------------------")
+            #____________________________________SNLI(Generated Data)___________________________________________________________________________
+            file_path = "./data/new_benchmarks/resources/MNLI/negated_indices.pkl"
+            with open(file_path, "rb") as file_obj:
+                neg_cues_dict = pickle.load(file_obj)  #keys: tr_pred_scope,te_pred_scope
         
-        
-        print("\n\nStarted: Evaluation on new pairs containing negation----------------------------------------------------------")
-        #____________________________________SNLI(Generated Data)___________________________________________________________________________
-        file_path = "./data/new_benchmarks/resources/MNLI/negated_indices.pkl"
-        with open(file_path, "rb") as file_obj:
-            neg_cues_dict = pickle.load(file_obj)  #keys: tr_pred_scope,te_pred_scope
-    
-        # RoBERTa
-        model_name  = "RoBERTa"
-        actual_file   = "./outputs/predictions/MNLI/RoBERTa/new_dev/rte_actuals.csv"
-        pred_file     = "./outputs/predictions/MNLI/RoBERTa/new_dev/rte_prediction.csv"
-        evaluation().accuracy_new_corpus(model_name, actual_file, pred_file, neg_cues_dict)
-        
-        print("Ended: Evaluation on new pairs containing negation----------------------------------------------------------")
+            # RoBERTa
+            model_name  = "RoBERTa"
+            # actual_file   = "./outputs/predictions/MNLI/RoBERTa/new_dev/rte_actuals.csv"
+            # pred_file     = "./outputs/predictions/MNLI/RoBERTa/new_dev/rte_prediction.csv"
+            actual_file = "./preds/predictions/MNLI/RoBERTa/" + path + "/new_dev/rte_actuals.csv"
+            pred_file   = "./preds/predictions/MNLI/RoBERTa/" + path + "/new_dev/rte_prediction.csv"
+            evaluation().accuracy_new_corpus(path, actual_file, pred_file, neg_cues_dict)
+            
+            print("Ended: Evaluation on new pairs containing negation----------------------------------------------------------")
 
 
