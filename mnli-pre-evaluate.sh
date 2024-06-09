@@ -15,7 +15,7 @@ inputs=(
 )
 
 # Maximum number of concurrent jobs, equals to the number of GPUs
-MAX_JOBS=1
+MAX_JOBS=4
 
 # Directory to store the downloaded models
 MODEL_DIR=./downloaded_models
@@ -29,7 +29,7 @@ cp ./data/new_benchmarks/processed_for_run/MNLI/dev_matched.tsv ./data/GLUE/MNLI
 # We haven't worked with mismatched genres. Just just made a duplicate copy of dev_matched.tsv file and named as dev_mismatched.tsv for running the systems successfully.
 cp ./data/new_benchmarks/processed_for_run/MNLI/dev_mismatched.tsv ./data/GLUE/MNLI/dev_mismatched.tsv
 
-
+mkdir outputs/predictions/MNLI/RoBERTa/new_dev
 # export task directory and name
 export GLUE_DIR=./data/GLUE/
 export TASK_NAME=MNLI
