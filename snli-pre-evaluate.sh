@@ -2,15 +2,6 @@
 
 # Define your inputs here. For example:
 inputs=(
-    "roberta-large roberta-large-nsp-1000000-1e-06-32"
-    "roberta-large roberta-large-pp-500000-1e-06-128"
-    "roberta-large roberta-large-dual-500000-1e-06-128"
-
-    "roberta-base roberta-base-pp-1000000-1e-06-128"
-    "roberta-base roberta-base-nsp-1000000-1e-06-32"
-    "roberta-base roberta-base-dual-1000000-1e-06-128"
-
-    "roberta-base roberta-base"
     "roberta-large roberta-large"
 )
 

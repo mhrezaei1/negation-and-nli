@@ -186,17 +186,17 @@ if __name__ == "__main__":
     # args        = argParser.parse_args()
     # corpus      = args.corpus
     models = [
-        "roberta-base",
-        "roberta-base-pp-1000000-1e-06-128",
-        "roberta-base-nsp-1000000-1e-06-32",
-        "roberta-base-dual-1000000-1e-06-128",
-        "roberta-large",
-        "roberta-large-pp-500000-1e-06-128",
+        # "roberta-base",
+        # "roberta-base-pp-1000000-1e-06-128",
+        # "roberta-base-nsp-1000000-1e-06-32",
+        # "roberta-base-dual-1000000-1e-06-128",
+        # "roberta-large",
+        # "roberta-large-pp-500000-1e-06-128",
         "roberta-large-nsp-1000000-1e-06-32",
         "roberta-large-dual-500000-1e-06-128",
     ]
 
-    corpus = "snli"
+    corpus = "mnli"
     for path in models:
 
         if corpus == "rte":
@@ -276,7 +276,7 @@ if __name__ == "__main__":
 
         elif corpus == "mnli":
             #Read negation in original dev split
-            file_path = "./data/resources/MNLI/negation_indices.pkl"
+            file_path = "./data/resources/MNLI/negation_indicies_matched.pkl"
             with open(file_path, "rb") as file_obj:
                 dev_cues = pickle.load(file_obj)  
             cues_only_sent1, cues_only_sent2, cues_both_sent, cues_all, no_cues = negation_cues().get_cue_indices(dev_cues)
@@ -286,9 +286,9 @@ if __name__ == "__main__":
             # RoBERTa
             model_name    = "RoBERTa"
             # actual_file   = "./outputs/predictions/MNLI/RoBERTa/original_dev/rte_actuals.csv"
-            actual_file  = "./preds/predictions/MNLI/RoBERTa/" + path + "/original_devrte_actuals.csv"
+            actual_file  = "./preds/predictions/MNLI/RoBERTa/" + path + "/original_devmnli_actuals.csv"
             # pred_file     = "./outputs/predictions/MNLI/RoBERTa/original_dev/rte_prediction.csv"
-            pred_file    = "./preds/predictions/MNLI/RoBERTa/" + path + "/original_devrte_prediction.csv"
+            pred_file    = "./preds/predictions/MNLI/RoBERTa/" + path + "/original_devmnli_prediction.csv"
             evaluation().accuracy_org_corpus(path, actual_file, pred_file, cues_indices_dict)
             
             print("Ended: Evaluation on original dev split----------------------------------------------------------")
@@ -304,8 +304,8 @@ if __name__ == "__main__":
             model_name  = "RoBERTa"
             # actual_file   = "./outputs/predictions/MNLI/RoBERTa/new_dev/rte_actuals.csv"
             # pred_file     = "./outputs/predictions/MNLI/RoBERTa/new_dev/rte_prediction.csv"
-            actual_file = "./preds/predictions/MNLI/RoBERTa/" + path + "/new_dev/rte_actuals.csv"
-            pred_file   = "./preds/predictions/MNLI/RoBERTa/" + path + "/new_dev/rte_prediction.csv"
+            actual_file = "./preds/predictions/MNLI/RoBERTa/" + path + "/new_dev/mnli_actuals.csv"
+            pred_file   = "./preds/predictions/MNLI/RoBERTa/" + path + "/new_dev/mnli_prediction.csv"
             evaluation().accuracy_new_corpus(path, actual_file, pred_file, neg_cues_dict)
             
             print("Ended: Evaluation on new pairs containing negation----------------------------------------------------------")
