@@ -2,7 +2,7 @@
 
 # Define your inputs here. For example:
 inputs=(
-    "bert-base-uncased bert-base-uncased"
+    "mhr2004/bert-large-uncased-nsp-1000000-1e-06-64 mhr2004/bert-large-uncased-nsp-1000000-1e-06-64"
 )
 
 # Maximum number of concurrent jobs, equals to the number of GPUs
