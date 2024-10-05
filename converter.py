@@ -6,12 +6,12 @@
 from transformers import AutoModel, AutoTokenizer
 
 model_paths = [
-  "bert-large-uncased-nsp-500000-1e-06-128"
-  "bert-large-uncased-pp-500000-1e-06-128"
-  "bert-large-uncased-dual-500000-1e-06-32"
-  "bert-base-uncased-nsp-500000-1e-06-64"
-  "bert-base-uncased-pp-500000-1e-06-64"
-  "bert-base-uncased-dual-500000-1e-06-32"
+  "bert-large-uncased-nsp-500000-1e-06-128",
+  "bert-large-uncased-pp-500000-1e-06-128",
+  "bert-large-uncased-dual-500000-1e-06-32",
+  "bert-base-uncased-nsp-500000-1e-06-64",
+  "bert-base-uncased-pp-500000-1e-06-64",
+  "bert-base-uncased-dual-500000-1e-06-32",
 ]
 
 class Args:
