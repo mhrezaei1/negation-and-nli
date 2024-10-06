@@ -2,7 +2,14 @@
 
 # Define your inputs here. For example:
 inputs=(
+  "bert bert-large-uncased"
   "bert bert-large-uncased-nsp-1000000-1e-06-64"
+  "bert bert-large-uncased-pp-1000000-1e-06-32"
+  "bert bert-large-uncased-dual-1000000-1e-06-32"
+  "bert bert-base-uncased"
+  "bert bert-base-uncased-pp-1000000-1e-06-32"
+  "bert bert-base-uncased-nsp-1000000-1e-06-32"
+  "bert bert-base-uncased-dual-1000000-1e-06-32"
 )
 
 # Maximum number of concurrent jobs, equals to the number of GPUs
@@ -23,6 +30,7 @@ check_jobs() {
 for i in "${!inputs[@]}"; do
     # Check if we need to wait for a job slot to become available
     check_jobs
+    sleep 60
     # Calculate GPU index: i % MAX_JOBS ensures cycling through GPUs 0 to MAX_JOBS-1
     gpu_index=$((i % 4))
 
