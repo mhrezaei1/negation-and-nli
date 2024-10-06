@@ -6,12 +6,8 @@
 from transformers import AutoModel, AutoTokenizer
 
 model_paths = [
-  "bert-large-uncased-nsp-1000000-1e-06-64"
-  "bert-large-uncased-pp-1000000-1e-06-32"
-  "bert-large-uncased-dual-1000000-1e-06-32"
-  "bert-base-uncased-pp-1000000-1e-06-32"
-  "bert-base-uncased-nsp-1000000-1e-06-32"
-  "bert-base-uncased-dual-1000000-1e-06-32"
+    "bert-base-uncased",
+    "bert-large-uncased",
 ]
 
 class Args:
@@ -20,8 +16,8 @@ class Args:
 
 for path in model_paths:
     args = Args(path)
-    AutoModel.from_pretrained('mhr2004/' + args.path).save_pretrained('./negation-and-nli/downloaded_models/mhr2004/' + args.path)
-    AutoTokenizer.from_pretrained('mhr2004/' + args.path).save_pretrained('./negation-and-nli/downloaded_models/mhr2004/' + args.path)
+    AutoModel.from_pretrained( args.path).save_pretrained('./negation-and-nli/downloaded_models/mhr2004/' + args.path)
+    AutoTokenizer.from_pretrained(args.path).save_pretrained('./negation-and-nli/downloaded_models/mhr2004/' + args.path)
 
     # import torch
     # from safetensors.torch import load_file
