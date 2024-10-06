@@ -6,7 +6,7 @@
 from transformers import AutoModel, AutoTokenizer
 
 model_paths = [
-  "bert bert-large-uncased-nsp-1000000-1e-06-64"
+  "bert-large-uncased-nsp-1000000-1e-06-64"
 ]
 
 class Args:
