@@ -2,14 +2,7 @@
 
 # Define your inputs here. For example:
 inputs=(
-  "bert bert-large-uncased"
   "bert bert-large-uncased-nsp-1000000-1e-06-64"
-  "bert bert-large-uncased-pp-1000000-1e-06-32"
-  "bert bert-large-uncased-dual-1000000-1e-06-32"
-  "bert bert-base-uncased"
-  "bert bert-base-uncased-pp-1000000-1e-06-32"
-  "bert bert-base-uncased-nsp-1000000-1e-06-32"
-  "bert bert-base-uncased-dual-1000000-1e-06-32"
 )
 
 # Maximum number of concurrent jobs, equals to the number of GPUs
