@@ -1,0 +1,1 @@
+./mnli-pre.sh && ./mnli-pre-evaluate.sh && ./rte-pre.sh && ./rte-pre-evaluate.sh && ./snli-pre.sh && ./snli-pre-evaluate.sh

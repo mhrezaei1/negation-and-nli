@@ -2,18 +2,20 @@
 
 # Define your inputs here. For example:
 inputs=(
-  "bert bert-large-uncased"
-  "bert bert-large-uncased-nsp-1000000-1e-06-64"
-  "bert bert-large-uncased-pp-1000000-1e-06-32"
-  "bert bert-large-uncased-dual-1000000-1e-06-32"
-  "bert bert-base-uncased"
-  "bert bert-base-uncased-pp-1000000-1e-06-32"
-  "bert bert-base-uncased-nsp-1000000-1e-06-32"
-  "bert bert-base-uncased-dual-1000000-1e-06-32"
+    "roberta-large roberta-large-nsp-1000000-1e-06-32"
+    "roberta-large roberta-large-pp-500000-1e-06-128"
+    "roberta-large roberta-large-dual-500000-1e-06-128"
+
+    "roberta-base roberta-base-pp-1000000-1e-06-128"
+    "roberta-base roberta-base-nsp-1000000-1e-06-32"
+    "roberta-base roberta-base-dual-1000000-1e-06-128"
+
+    "roberta-base roberta-base"
+    "roberta-large roberta-large"
 )
 
 # Maximum number of concurrent jobs, equals to the number of GPUs
-MAX_JOBS=8
+MAX_JOBS=2
 
 # Directory to store the downloaded models
 MODEL_DIR=./downloaded_models
@@ -44,10 +46,11 @@ check_jobs() {
 for i in "${!inputs[@]}"; do
     # Check if we need to wait for a job slot to become available
     check_jobs
-    sleep 500
+    
     # Calculate GPU index: i % MAX_JOBS ensures cycling through GPUs 0 to MAX_JOBS-1
-    gpu_index=$((i % 4))
-
+    gpu_index=$((i % MAX_JOBS))
+    # add 2 to gpu_index
+    gpu_index=$((gpu_index + 2))
 
     # Split input into variables
     roberta_type=$(echo ${inputs[$i]} | awk '{print $1}')
@@ -71,7 +74,7 @@ for i in "${!inputs[@]}"; do
     export PRED_DIR=./outputs/predictions/RTE/RoBERTa/$RoBERTa_Path/new_dev/
 
     # Execute the training script with CUDA_VISIBLE_DEVICES set for the specific GPU
-    CUDA_VISIBLE_DEVICES=$gpu_index python ./transformers/examples/run_glue.py --model_type bert --model_name_or_path ./outputs/models/RTE/RoBERTa/$roberta_path --task_name $TASK_NAME --do_eval --do_lower_case --data_dir $GLUE_DIR/$TASK_NAME --max_seq_length 128 --per_gpu_train_batch_size 32 --save_steps 20000 --learning_rate 2e-5 --num_train_epochs 3.0 --output_dir ./outputs/models/$TASK_NAME/RoBERTa/$RoBERTa_Path &
+    CUDA_VISIBLE_DEVICES=$gpu_index python ./transformers/examples/run_glue.py --model_type roberta --model_name_or_path ./outputs/models/RTE/RoBERTa/$roberta_path --task_name $TASK_NAME --do_eval --do_lower_case --data_dir $GLUE_DIR/$TASK_NAME --max_seq_length 128 --per_gpu_train_batch_size 32 --save_steps 20000 --learning_rate 2e-5 --num_train_epochs 3.0 --output_dir ./outputs/models/$TASK_NAME/RoBERTa/$RoBERTa_Path &
 
 done
 
