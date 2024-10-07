@@ -44,7 +44,7 @@ check_jobs() {
 for i in "${!inputs[@]}"; do
     # Check if we need to wait for a job slot to become available
     check_jobs
-    sleep 60
+    # sleep 60
     # Calculate GPU index: i % MAX_JOBS ensures cycling through GPUs 0 to MAX_JOBS-1
     gpu_index=$((i % 4))
 
