@@ -2,11 +2,9 @@
 
 # Define your inputs here. For example:
 inputs=(
-  "bert bert-large-uncased"
   "bert bert-large-uncased-nsp-1000000-1e-06-64"
   "bert bert-large-uncased-pp-1000000-1e-06-32"
   "bert bert-large-uncased-dual-1000000-1e-06-32"
-  "bert bert-base-uncased"
   "bert bert-base-uncased-pp-1000000-1e-06-32"
   "bert bert-base-uncased-nsp-1000000-1e-06-32"
   "bert bert-base-uncased-dual-1000000-1e-06-32"
@@ -71,7 +69,7 @@ for i in "${!inputs[@]}"; do
     export PRED_DIR=./outputs/predictions/RTE/RoBERTa/$RoBERTa_Path/new_dev/
 
     # Execute the training script with CUDA_VISIBLE_DEVICES set for the specific GPU
-    CUDA_VISIBLE_DEVICES=$gpu_index python ./transformers/examples/run_glue.py --model_type bert --model_name_or_path $MODEL_DIR/mhr2004/$roberta_path --task_name $TASK_NAME --do_train --do_eval --do_lower_case --data_dir $GLUE_DIR/$TASK_NAME --max_seq_length 128 --per_gpu_train_batch_size 32 --save_steps 20000 --learning_rate 2e-5 --num_train_epochs 3.0 --output_dir ./outputs/models/$TASK_NAME/RoBERTa/$RoBERTa_Path &
+    CUDA_VISIBLE_DEVICES=$gpu_index python ./transformers/examples/run_glue.py --model_type bert --model_name_or_path $MODEL_DIR/mhr2004/$roberta_path --task_name $TASK_NAME --do_train --do_eval --do_lower_case --data_dir $GLUE_DIR/$TASK_NAME --max_seq_length 128 --per_gpu_train_batch_size 8 --save_steps 20000 --learning_rate 2e-5 --num_train_epochs 50.0 --output_dir ./outputs/models/$TASK_NAME/RoBERTa/$RoBERTa_Path &
 
 done
 
