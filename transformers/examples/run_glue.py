@@ -36,25 +36,21 @@ except:
 
 from tqdm import tqdm, trange
 
-from transformers import (WEIGHTS_NAME, BertConfig,
-                                  BertForSequenceClassification, BertTokenizer,
-                                  RobertaConfig,
-                                  RobertaForSequenceClassification,
-                                  RobertaTokenizer,
-                                  XLMConfig, XLMForSequenceClassification,
-                                  XLMTokenizer, XLNetConfig,
-                                  XLNetForSequenceClassification,
-                                  XLNetTokenizer,
-                                  DistilBertConfig,
-                                  DistilBertForSequenceClassification,
-                                  DistilBertTokenizer)
-
-from transformers import AdamW, WarmupLinearSchedule
-
+from transformers import (WEIGHTS_NAME, AdamW, BertConfig,
+                          BertForSequenceClassification, BertTokenizer,
+                          DistilBertConfig,
+                          DistilBertForSequenceClassification,
+                          DistilBertTokenizer, RobertaConfig,
+                          RobertaForSequenceClassification, RobertaTokenizer,
+                          WarmupLinearSchedule, XLMConfig,
+                          XLMForSequenceClassification, XLMTokenizer,
+                          XLNetConfig, XLNetForSequenceClassification,
+                          XLNetTokenizer)
 from transformers import glue_compute_metrics as compute_metrics
+from transformers import \
+    glue_convert_examples_to_features as convert_examples_to_features
 from transformers import glue_output_modes as output_modes
 from transformers import glue_processors as processors
-from transformers import glue_convert_examples_to_features as convert_examples_to_features
 
 logger = logging.getLogger(__name__)
 
@@ -476,7 +472,7 @@ def main():
     config_class, model_class, tokenizer_class = MODEL_CLASSES[args.model_type]
     config = config_class.from_pretrained(args.config_name if args.config_name else args.model_name_or_path, num_labels=num_labels, finetuning_task=args.task_name)
     tokenizer = tokenizer_class.from_pretrained(args.tokenizer_name if args.tokenizer_name else args.model_name_or_path, do_lower_case=args.do_lower_case)
-    model = model_class.from_pretrained(args.model_name_or_path, from_tf=bool('.ckpt' in args.model_name_or_path), config=config)
+    model = model_class.from_pretrained(args.model_name_or_path, from_tf=bool('.ckpt' in args.model_name_or_path), config=config, ignore_mismatched_sizes=True)
 
     if args.local_rank == 0:
         torch.distributed.barrier()  # Make sure only the first process in distributed training will download model & vocab
