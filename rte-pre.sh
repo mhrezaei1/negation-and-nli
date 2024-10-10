@@ -3,6 +3,11 @@
 # Define your inputs here. For example:
 inputs=(
     "roberta mhr2004/roberta-base-pp-1000000-1e-06-128"
+    "roberta mhr2004/roberta-base-dual-1000000-1e-06-128"
+    "roberta mhr2004/roberta-large-pp-500000-1e-06-128"
+    "roberta mhr2004/roberta-large-nsp-1000000-1e-06-32"
+    "roberta mhr2004/roberta-large-dual-500000-1e-06-128"
+    "roberta mhr2004/roberta-base-nsp-1000000-1e-06-32"
 )
 
 # Maximum number of concurrent jobs, equals to the number of GPUs
