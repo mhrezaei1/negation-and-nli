@@ -16,12 +16,13 @@
 from __future__ import (absolute_import, division, print_function,
                         unicode_literals)
 
+import copy
+import json
 import logging
 import os
-import json
-import six
-import copy
 from io import open
+
+import six
 
 from .file_utils import cached_path, is_tf_available, is_torch_available
 
@@ -229,6 +230,7 @@ class PreTrainedTokenizer(object):
                 if key == 'additional_special_tokens':
                     assert isinstance(value, (list, tuple)) and all(isinstance(t, str) or (six.PY2 and isinstance(t, unicode)) for t in value)
                 else:
+                    pass
                     assert isinstance(value, str) or (six.PY2 and isinstance(value, unicode))
                 setattr(self, key, value)
 
