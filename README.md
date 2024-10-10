@@ -1,3 +1,14 @@
+For this repo to work:
+1. you need python3.7 (strictly)
+2. create a venv:
+  - install latest torch
+  - install transformers/requirments.txt
+  - install transformers as editable
+3. create a second venv:
+  - install latest torch transformers datasets and download models using converter.py
+4. Run the models. make sure you check model pathes
+
+
 Negation and Natural Language Inference (forked)
 ===================================================================
 This repository contains code of the EMNLP2020 paper "An Analysis of Natural Language Inference Benchmarks through the Lens of Negation". Paper link: https://www.aclweb.org/anthology/2020.emnlp-main.732.pdf  
