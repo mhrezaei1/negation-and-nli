@@ -6,7 +6,7 @@
 from transformers import AutoModel, AutoTokenizer
 
 model_paths = [
-    "mhr2004/roberta-base-pp-500000-1e-06-128",
+    "mhr2004/roberta-base-pp-1000000-1e-06-128",
     "mhr2004/roberta-base-dual-1000000-1e-06-128",
     "mhr2004/roberta-large-pp-500000-1e-06-128",
     "mhr2004/roberta-large-nsp-1000000-1e-06-32",
