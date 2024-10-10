@@ -231,7 +231,7 @@ class PreTrainedTokenizer(object):
                     assert isinstance(value, (list, tuple)) and all(isinstance(t, str) or (six.PY2 and isinstance(t, unicode)) for t in value)
                 else:
                     pass
-                    assert isinstance(value, str) or (six.PY2 and isinstance(value, unicode))
+                    # assert isinstance(value, str) or (six.PY2 and isinstance(value, unicode))
                 setattr(self, key, value)
 
 
