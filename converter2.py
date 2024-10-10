@@ -6,12 +6,12 @@
 from transformers import AutoModel, AutoTokenizer
 
 model_paths = [
-    "roberta-base-pp-500000-1e-06-128",
-    "roberta-base-dual-1000000-1e-06-128",
-    "roberta-large-pp-500000-1e-06-128",
-    "roberta-large-nsp-1000000-1e-06-32",
-    "roberta-large-dual-500000-1e-06-128",
-    "roberta-base-nsp-1000000-1e-06-32",
+    "mhr2004/roberta-base-pp-500000-1e-06-128",
+    "mhr2004/roberta-base-dual-1000000-1e-06-128",
+    "mhr2004/roberta-large-pp-500000-1e-06-128",
+    "mhr2004/roberta-large-nsp-1000000-1e-06-32",
+    "mhr2004/roberta-large-dual-500000-1e-06-128",
+    "mhr2004/roberta-base-nsp-1000000-1e-06-32",
 ]
 
 class Args:
