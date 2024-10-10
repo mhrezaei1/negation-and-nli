@@ -20,8 +20,8 @@ class Args:
 
 for path in model_paths:
     args = Args(path)
-    AutoModel.from_pretrained(args.path).save_pretrained('./negation-and-nli/downloaded_models/mhr2004/' + args.path)
-    AutoTokenizer.from_pretrained(args.path).save_pretrained('./negation-and-nli/downloaded_models/mhr2004/' + args.path)
+    AutoModel.from_pretrained(args.path).save_pretrained('./downloaded_models/mhr2004/' + args.path)
+    AutoTokenizer.from_pretrained(args.path).save_pretrained('./downloaded_models/mhr2004/' + args.path)
 
     # import torch
     # from safetensors.torch import load_file
