@@ -694,3 +694,43 @@ Accuracy on all new pairs: 65.06666666666666
 Majority baseline: 39.27
 
 Ended: Evaluation on new pairs containing negation----------------------------------------------------------
+Model-name:  bert-large-uncased
+Corpus:  rte
+
+Started: Evaluation on original dev split----------------------------------------------------------
+Accuracy by bert-large-uncased______________
+Accuracy on Dev:   67.50902527075812
+Majority baseline: 52.71
+
+Accuracy on Dev (negations): 56.09756097560975
+Majority baseline: 51.22
+
+Ended: Evaluation on original dev split----------------------------------------------------------
+
+
+Started: Evaluation on new pairs containing negation----------------------------------------------------------
+Accuracy by bert-large-uncased______________
+Accuracy on Tneg-H pairs: 57.0
+Majority baseline: 80.2
+
+Accuracy on T-Heng pairs: 40.8
+Majority baseline: 91.0
+
+Accuracy on Tneg-Hneg pairs: 62.4
+Majority baseline: 65.6
+
+Accuracy on all new pairs: 53.4
+Majority baseline: 78.93
+
+Ended: Evaluation on new pairs containing negation----------------------------------------------------------
+Model-name:  bert-large-uncased
+Corpus:  snli
+
+Started: Evaluation on original dev split----------------------------------------------------------
+Accuracy by bert-large-uncased______________
+Accuracy on Dev:   91.57691526112579
+Majority baseline: 33.82
+
+Accuracy on Dev (negations): 92.62672811059907
+Majority baseline: 54.38
+
