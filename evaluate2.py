@@ -188,14 +188,12 @@ if __name__ == "__main__":
     # args        = argParser.parse_args()
     # corpus      = args.corpus
     models = [
-        # "bert-large-uncased",
-        "bert-large-uncased-nsp-1000000-1e-06-64",
-        "bert-large-uncased-pp-1000000-1e-06-32",
-        "bert-large-uncased-dual-1000000-1e-06-32",
-        # "bert-base-uncased",
-        "bert-base-uncased-pp-1000000-1e-06-32",
-        "bert-base-uncased-nsp-1000000-1e-06-32",
-        "bert-base-uncased-dual-1000000-1e-06-32",
+        "roberta-base-pp-1000000-1e-06-128",
+        "roberta-base-dual-1000000-1e-06-128",
+        "roberta-large-pp-500000-1e-06-128",
+        "roberta-large-nsp-1000000-1e-06-32",
+        "roberta-base-nsp-1000000-1e-06-32",
+        "roberta-large-dual-500000-1e-06-128",
     ]
 
     corpuses = [
@@ -210,20 +208,20 @@ if __name__ == "__main__":
 
             if corpus == "rte":
                 #Read negation in original dev split
-                # file_path = "./data/resources/RTE/negation_indices.pkl"
-                # with open(file_path, "rb") as file_obj:
-                #     dev_cues = pickle.load(file_obj)  
-                # cues_only_sent1, cues_only_sent2, cues_both_sent, cues_all, no_cues = negation_cues().get_cue_indices(dev_cues)
-                # cues_indices_dict = {"cues_only_sent1":cues_only_sent1, "cues_only_sent2":cues_only_sent2, "cues_both_sent":cues_both_sent, "cues_all":cues_all, "no_cues":no_cues}
+                file_path = "./data/resources/RTE/negation_indices.pkl"
+                with open(file_path, "rb") as file_obj:
+                    dev_cues = pickle.load(file_obj)  
+                cues_only_sent1, cues_only_sent2, cues_both_sent, cues_all, no_cues = negation_cues().get_cue_indices(dev_cues)
+                cues_indices_dict = {"cues_only_sent1":cues_only_sent1, "cues_only_sent2":cues_only_sent2, "cues_both_sent":cues_both_sent, "cues_all":cues_all, "no_cues":no_cues}
                 
-                # print("\nStarted: Evaluation on original dev split----------------------------------------------------------")
-                # # RoBERTa
-                # model_name    = "RoBERTa"
-                # # actual_file   = "./outputs/predictions/RTE/RoBERTa/original_dev/rte_actuals.csv"
-                # actual_file   = "./preds/predictions/RTE/RoBERTa/" + path + "/original_devrte_actuals.csv"
-                # # pred_file     = "./outputs/predictions/RTE/RoBERTa/original_dev/rte_prediction.csv"
-                # pred_file     = "./preds/predictions/RTE/RoBERTa/" + path + "/original_devrte_prediction.csv"
-                # evaluation().accuracy_org_corpus(path, actual_file, pred_file, cues_indices_dict)
+                print("\nStarted: Evaluation on original dev split----------------------------------------------------------")
+                # RoBERTa
+                model_name    = "RoBERTa"
+                # actual_file   = "./outputs/predictions/RTE/RoBERTa/original_dev/rte_actuals.csv"
+                actual_file   = "./newrte/RTE/RoBERTa/mhr2004/" + path + "/original_devrte_actuals.csv"
+                # pred_file     = "./outputs/predictions/RTE/RoBERTa/original_dev/rte_prediction.csv"
+                pred_file     = "./newrte/RTE/RoBERTa/mhr2004/" + path + "/original_devrte_prediction.csv"
+                evaluation().accuracy_org_corpus(path, actual_file, pred_file, cues_indices_dict)
                 
                 
                 # print("Ended: Evaluation on original dev split----------------------------------------------------------")
@@ -238,9 +236,9 @@ if __name__ == "__main__":
                 # RoBERTa
                 model_name  = "RoBERTa"
                 # actual_file   = "./outputs/predictions/RTE/RoBERTa/new_dev/rte_actuals.csv"
-                actual_file  = "./RoBERTa/" + path + "/new_dev/rte_actuals.csv"
+                actual_file  = "./newrte/RTE/RoBERTa/mhr2004/" + path + "/new_dev/rte_actuals.csv"
                 # pred_file     = "./outputs/predictions/RTE/RoBERTa/new_dev/rte_prediction.csv"
-                pred_file    = "./RoBERTa/" + path + "/new_dev/rte_prediction.csv"
+                pred_file    = "./newrte/RTE/RoBERTa/mhr2004/" + path + "/new_dev/rte_prediction.csv"
                 evaluation().accuracy_new_corpus(path, actual_file, pred_file, neg_cues_dict)
                 
                 print("Ended: Evaluation on new pairs containing negation----------------------------------------------------------")
