@@ -1,0 +1,101 @@
+Model-name:  roberta-base-pp-1000000-1e-06-128
+Corpus:  rte
+
+
+Started: Evaluation on new pairs containing negation----------------------------------------------------------
+Accuracy by roberta-base-pp-1000000-1e-06-128______________
+Accuracy on Tneg-H pairs: 79.2
+Majority baseline: 80.2
+
+Accuracy on T-Heng pairs: 56.0
+Majority baseline: 91.0
+
+Accuracy on Tneg-Hneg pairs: 67.8
+Majority baseline: 65.6
+
+Accuracy on all new pairs: 67.66666666666667
+Majority baseline: 78.93
+
+Ended: Evaluation on new pairs containing negation----------------------------------------------------------
+Model-name:  roberta-base-dual-1000000-1e-06-128
+Corpus:  rte
+
+
+Started: Evaluation on new pairs containing negation----------------------------------------------------------
+Accuracy by roberta-base-dual-1000000-1e-06-128______________
+Accuracy on Tneg-H pairs: 88.0
+Majority baseline: 80.2
+
+Accuracy on T-Heng pairs: 83.6
+Majority baseline: 91.0
+
+Accuracy on Tneg-Hneg pairs: 71.4
+Majority baseline: 65.6
+
+Accuracy on all new pairs: 81.0
+Majority baseline: 78.93
+
+Ended: Evaluation on new pairs containing negation----------------------------------------------------------
+Model-name:  roberta-large-pp-500000-1e-06-128
+Corpus:  rte
+
+
+Started: Evaluation on new pairs containing negation----------------------------------------------------------
+Accuracy by roberta-large-pp-500000-1e-06-128______________
+Accuracy on Tneg-H pairs: 80.2
+Majority baseline: 80.2
+
+Accuracy on T-Heng pairs: 91.0
+Majority baseline: 91.0
+
+Accuracy on Tneg-Hneg pairs: 65.6
+Majority baseline: 65.6
+
+Accuracy on all new pairs: 78.93333333333334
+Majority baseline: 78.93
+
+Ended: Evaluation on new pairs containing negation----------------------------------------------------------
+Model-name:  roberta-large-nsp-1000000-1e-06-32
+Corpus:  rte
+
+
+Started: Evaluation on new pairs containing negation----------------------------------------------------------
+Accuracy by roberta-large-nsp-1000000-1e-06-32______________
+Accuracy on Tneg-H pairs: 88.0
+Majority baseline: 80.2
+
+Accuracy on T-Heng pairs: 89.6
+Majority baseline: 91.0
+
+Accuracy on Tneg-Hneg pairs: 81.6
+Majority baseline: 65.6
+
+Accuracy on all new pairs: 86.4
+Majority baseline: 78.93
+
+Ended: Evaluation on new pairs containing negation----------------------------------------------------------
+Model-name:  roberta-base-nsp-1000000-1e-06-32
+Corpus:  rte
+
+
+Started: Evaluation on new pairs containing negation----------------------------------------------------------
+Accuracy by roberta-base-nsp-1000000-1e-06-32______________
+Accuracy on Tneg-H pairs: 86.6
+Majority baseline: 80.2
+
+Accuracy on T-Heng pairs: 78.2
+Majority baseline: 91.0
+
+Accuracy on Tneg-Hneg pairs: 71.4
+Majority baseline: 65.6
+
+Accuracy on all new pairs: 78.73333333333333
+Majority baseline: 78.93
+
+Ended: Evaluation on new pairs containing negation----------------------------------------------------------
+Model-name:  roberta-large-dual-500000-1e-06-128
+Corpus:  rte
+
+
+Started: Evaluation on new pairs containing negation----------------------------------------------------------
+Accuracy by roberta-large-dual-500000-1e-06-128______________

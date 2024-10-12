@@ -207,24 +207,24 @@ if __name__ == "__main__":
             print("Corpus: ", corpus)
 
             if corpus == "rte":
-                #Read negation in original dev split
-                file_path = "./data/resources/RTE/negation_indices.pkl"
-                with open(file_path, "rb") as file_obj:
-                    dev_cues = pickle.load(file_obj)  
-                cues_only_sent1, cues_only_sent2, cues_both_sent, cues_all, no_cues = negation_cues().get_cue_indices(dev_cues)
-                cues_indices_dict = {"cues_only_sent1":cues_only_sent1, "cues_only_sent2":cues_only_sent2, "cues_both_sent":cues_both_sent, "cues_all":cues_all, "no_cues":no_cues}
+                # #Read negation in original dev split
+                # file_path = "./data/resources/RTE/negation_indices.pkl"
+                # with open(file_path, "rb") as file_obj:
+                #     dev_cues = pickle.load(file_obj)  
+                # cues_only_sent1, cues_only_sent2, cues_both_sent, cues_all, no_cues = negation_cues().get_cue_indices(dev_cues)
+                # cues_indices_dict = {"cues_only_sent1":cues_only_sent1, "cues_only_sent2":cues_only_sent2, "cues_both_sent":cues_both_sent, "cues_all":cues_all, "no_cues":no_cues}
                 
-                print("\nStarted: Evaluation on original dev split----------------------------------------------------------")
-                # RoBERTa
-                model_name    = "RoBERTa"
-                # actual_file   = "./outputs/predictions/RTE/RoBERTa/original_dev/rte_actuals.csv"
-                actual_file   = "./newrte/RTE/RoBERTa/mhr2004/" + path + "/original_devrte_actuals.csv"
-                # pred_file     = "./outputs/predictions/RTE/RoBERTa/original_dev/rte_prediction.csv"
-                pred_file     = "./newrte/RTE/RoBERTa/mhr2004/" + path + "/original_devrte_prediction.csv"
-                evaluation().accuracy_org_corpus(path, actual_file, pred_file, cues_indices_dict)
+                # print("\nStarted: Evaluation on original dev split----------------------------------------------------------")
+                # # RoBERTa
+                # model_name    = "RoBERTa"
+                # # actual_file   = "./outputs/predictions/RTE/RoBERTa/original_dev/rte_actuals.csv"
+                # actual_file   = "./newrte/RTE/RoBERTa/mhr2004/" + path + "/original_devrte_actuals.csv"
+                # # pred_file     = "./outputs/predictions/RTE/RoBERTa/original_dev/rte_prediction.csv"
+                # pred_file     = "./newrte/RTE/RoBERTa/mhr2004/" + path + "/original_devrte_prediction.csv"
+                # evaluation().accuracy_org_corpus(path, actual_file, pred_file, cues_indices_dict)
                 
                 
-                # print("Ended: Evaluation on original dev split----------------------------------------------------------")
+                # # print("Ended: Evaluation on original dev split----------------------------------------------------------")
                 
                 
                 print("\n\nStarted: Evaluation on new pairs containing negation----------------------------------------------------------")
@@ -236,9 +236,9 @@ if __name__ == "__main__":
                 # RoBERTa
                 model_name  = "RoBERTa"
                 # actual_file   = "./outputs/predictions/RTE/RoBERTa/new_dev/rte_actuals.csv"
-                actual_file  = "./newrte/RTE/RoBERTa/mhr2004/" + path + "/new_dev/rte_actuals.csv"
+                actual_file  = "./newrte-2/" + path + "/new_dev/rte_actuals.csv"
                 # pred_file     = "./outputs/predictions/RTE/RoBERTa/new_dev/rte_prediction.csv"
-                pred_file    = "./newrte/RTE/RoBERTa/mhr2004/" + path + "/new_dev/rte_prediction.csv"
+                pred_file    = "./newrte-2/" + path + "/new_dev/rte_prediction.csv"
                 evaluation().accuracy_new_corpus(path, actual_file, pred_file, neg_cues_dict)
                 
                 print("Ended: Evaluation on new pairs containing negation----------------------------------------------------------")
