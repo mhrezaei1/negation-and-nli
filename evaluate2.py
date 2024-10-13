@@ -218,9 +218,9 @@ if __name__ == "__main__":
                 # RoBERTa
                 model_name    = "RoBERTa"
                 # actual_file   = "./outputs/predictions/RTE/RoBERTa/original_dev/rte_actuals.csv"
-                actual_file   = "./rtenew/" + path + "/original_devrte_actuals.csv"
+                actual_file   = "./verynewrte/" + path + "/original_devrte_actuals.csv"
                 # pred_file     = "./outputs/predictions/RTE/RoBERTa/original_dev/rte_prediction.csv"
-                pred_file     = "./rtenew/" + path + "/original_devrte_prediction.csv"
+                pred_file     = "./verynewrte/" + path + "/original_devrte_prediction.csv"
                 evaluation().accuracy_org_corpus(path, actual_file, pred_file, cues_indices_dict)
                 
                 
