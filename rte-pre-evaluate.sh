@@ -2,12 +2,12 @@
 
 # Define your inputs here. For example:
 inputs=(
-    "roberta mhr2004/roberta-base-pp-1000000-1e-06-128"
-    "roberta mhr2004/roberta-base-dual-1000000-1e-06-128"
-    "roberta mhr2004/roberta-large-pp-500000-1e-06-128"
-    "roberta mhr2004/roberta-large-nsp-1000000-1e-06-32"
-    "roberta mhr2004/roberta-large-dual-500000-1e-06-128"
-    "roberta mhr2004/roberta-base-nsp-1000000-1e-06-32"
+    "roberta mhr2004/roberta-largemhr2004-atomic.anion.train.no1e-06-128",
+    "roberta mhr2004/roberta-large-anion.train.no.negation.true.irrelevant1e-06-64",
+    "roberta mhr2004/roberta-large-atomic.train.no.negation.true.irrelevant1e-06-64",
+    "roberta mhr2004/roberta-large-atomic-anion-1e-06-256-stsb-lr2e-05-bs32",
+    "roberta mhr2004/roberta-large-anion-1e-06-256-stsb-lr2e-05-bs32",
+    "roberta mhr2004/roberta-large-negcommonsensebalanced-1e-06-64-stsb-lr2e-05-bs32"
 )
 
 # Maximum number of concurrent jobs, equals to the number of GPUs

@@ -6,12 +6,12 @@
 from transformers import AutoModel, AutoTokenizer
 
 model_paths = [
-  "mhr2004/bert-large-uncased-nsp-1000000-1e-06-64",
-  "mhr2004/bert-large-uncased-pp-1000000-1e-06-32",
-  "mhr2004/bert-large-uncased-dual-1000000-1e-06-32",
-  "mhr2004/bert-base-uncased-pp-1000000-1e-06-32",
-  "mhr2004/bert-base-uncased-nsp-1000000-1e-06-32",
-  "mhr2004/bert-base-uncased-dual-1000000-1e-06-32",
+    "mhr2004/roberta-largemhr2004-atomic.anion.train.no1e-06-128",
+    "mhr2004/roberta-large-anion.train.no.negation.true.irrelevant1e-06-64",
+    "mhr2004/roberta-large-atomic.train.no.negation.true.irrelevant1e-06-64",
+    "mhr2004/roberta-large-atomic-anion-1e-06-256-stsb-lr2e-05-bs32",
+    "mhr2004/roberta-large-anion-1e-06-256-stsb-lr2e-05-bs32",
+    "mhr2004/roberta-large-negcommonsensebalanced-1e-06-64-stsb-lr2e-05-bs32"
 ]
 
 class Args:
